@@ -1,0 +1,35 @@
+apply plugin: 'application'
+apply plugin: 'eclipse'
+
+mainClassName = 'gl8080.slidedown.Main'
+ext.mainClass = mainClassName // for debug run
+
+compileJava {
+    options.encoding = 'UTF-8'
+}
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+startScripts {
+    applicationName = 'slidedown'
+}
+
+distZip {
+    baseName = 'slidedown'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'commons-io:commons-io:2.4'
+    compile 'org.apache.commons:commons-lang3:3.3.2'
+    compile 'log4j:log4j:1.2.17'
+    compile 'org.slf4j:slf4j-log4j12:1.7.10'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.1'
+}

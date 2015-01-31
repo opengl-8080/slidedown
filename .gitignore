@@ -1,0 +1,10 @@
+/build/
+/.classpath
+/.settings
+/.gradle/
+/.project
+/bin/
+/.nb-gradle/
+/conf/
+/log/
+/private/

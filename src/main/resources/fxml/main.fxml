@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.input.*?>
+<?import javafx.scene.web.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="633.0" prefWidth="962.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gl8080.slidedown.controller.MainController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+                  <MenuItem fx:id="newMenu" mnemonicParsing="false" onAction="#newFile" text="New">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+              <MenuItem fx:id="openFileMenu" mnemonicParsing="false" onAction="#openFile" text="Open">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                  <MenuItem fx:id="saveMenu" disable="true" mnemonicParsing="false" onAction="#saveFile" text="Save">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                  <MenuItem fx:id="saveAsMenu" disable="true" mnemonicParsing="false" onAction="#saveAsFile" text="Save As">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                     </accelerator></MenuItem>
+                  <MenuItem fx:id="closeMenu" disable="true" mnemonicParsing="false" onAction="#close" text="Close">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="W" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="exportHtmlMenu" disable="true" mnemonicParsing="false" onAction="#exportHtml" text="Export HTML">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="E" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="View">
+              <items>
+                <MenuItem fx:id="nextSlideMenu" disable="true" mnemonicParsing="false" onAction="#nextSlide" text="Next Slide">
+                     <accelerator>
+                        <KeyCodeCombination alt="DOWN" code="PAGE_DOWN" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                  <MenuItem fx:id="previousSlideMenu" disable="true" mnemonicParsing="false" onAction="#previousSlide" text="Previous Slide">
+                     <accelerator>
+                        <KeyCodeCombination alt="DOWN" code="PAGE_UP" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                  <MenuItem fx:id="firstSlideMenu" disable="true" mnemonicParsing="false" onAction="#firstSlide" text="First Slide">
+                     <accelerator>
+                        <KeyCodeCombination alt="DOWN" code="HOME" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                  <MenuItem fx:id="lastSlideMenu" disable="true" mnemonicParsing="false" onAction="#lastSlide" text="Last Slide">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="END" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="fullScreenMenu" disable="true" mnemonicParsing="false" onAction="#switchFullScreen" text="Full Screen">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="F11" control="UP" meta="ANY" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Settings">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#openEditorSettings" text="Editor" />
+                  <Menu fx:id="ratioMenu" disable="true" mnemonicParsing="false" text="Ratio">
+                     <items>
+                        <RadioMenuItem fx:id="standardRatioMenu" mnemonicParsing="false" onAction="#selectRatioStandard" selected="true" text="4:3">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="ratio" />
+                           </toggleGroup>
+                        </RadioMenuItem>
+                        <RadioMenuItem fx:id="wideRatioMenu" mnemonicParsing="false" onAction="#selectRatioWide" text="16:9" toggleGroup="$ratio" />
+                     </items>
+                  </Menu>
+              </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <SplitPane fx:id="mainSplitPane" dividerPositions="0.28" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <items>
+                  <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+                    <tabs>
+                      <Tab fx:id="markdownEditorTab" text="Markdown">
+                           <content>
+                              <TextArea fx:id="markdownTextArea" editable="false" prefHeight="200.0" prefWidth="200.0" />
+                           </content>
+                      </Tab>
+                      <Tab fx:id="cssEditorTab" text="CSS">
+                           <content>
+                              <TextArea fx:id="cssTextArea" editable="false" prefHeight="200.0" prefWidth="200.0" />
+                           </content>
+                      </Tab>
+                    </tabs>
+                  </TabPane>
+                  <WebView fx:id="preview" minHeight="-Infinity" minWidth="-1.0" prefHeight="261.0" prefWidth="206.0" />
+              </items>
+            </SplitPane>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
